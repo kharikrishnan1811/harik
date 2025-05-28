@@ -17,75 +17,129 @@ body {
 .container {
   width: 80%;
   margin: auto;
+    max-width: 1200px;
   overflow: hidden;
 }
 
 
-header h1 {
-  margin: 0;
-  font-size: 2.5rem;
-}
+/* Navbar basics */
 
-header p {
-  font-size: 1.2rem;
-}
-
-header nav ul {
-  list-style: none;
-  margin: 10px 0 0;
-  padding: 0;
-  text-align: right;
-justify-content: flex-end
-}
-
-header nav ul li {
-  display: inline;
-  margin: 0 10px;
-}
-
-header nav ul li a {
-  color: #3d07ff;
-  text-decoration: none;
-  font-size: 1.1rem;
-}
-
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  /* background: linear-gradient(to right, #6a11cb, #2575fc); */
-  color: rgb(89, 0, 255);
-  z-index: 1000;
-  padding: 10px 0;
-  backdrop-filter: blur(10px); /* Blur effect */
-  -webkit-backdrop-filter: blur(10px); /* For Safari support */
-
-}
-
-
-
-nav ul {
+/* 1) Make .navbar a flex container */
+.navbar {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  /* Remove any justify-content here so we can control order */
+}
+
+/* 2) Put hamburger on the left */
+.hamburger {
+  order: 1;
+}
+
+/* 3) Push nav-menu to the right */
+.nav-menu {
+  order: 2;
+  margin-left: auto;          /* key: this pushes it all the way right */
+  display: flex;              /* desktop: show inline */
+}
+
+/* 4) Ensure the UL inside remains inline on desktop */
+.nav-menu ul {
+  display: flex;
+  gap: 1.5rem;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-nav ul li {
-  margin: 0 15px;
+/* 5) Your existing mobile rules still apply */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  .nav-menu {
+    display: none;           /* hidden until toggled */
+    width: 100%;
+  }
+  .nav-menu.open {
+    display: block;
+    background: rgba(59,64,95,0.95);
+    padding: 1rem 0;
+  }
+  .nav-menu ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
 }
 
-nav ul li a {
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: #3b405f;
+  z-index: 1000;
+}
+
+/* Hamburger (hidden on desktop) */
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Nav-menu defaults */
+.nav-menu {
+  display: flex;
+}
+.nav-menu ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+.nav-menu a {
   color: white;
   text-decoration: none;
-  font-size: 1rem;
   transition: color 0.3s;
 }
-
-nav ul li a:hover {
+.nav-menu a:hover {
   color: #ffdd59;
+}
+
+/* MOBILE: ≤768px */
+@media (max-width: 768px) {
+  /* Show hamburger */
+  .hamburger {
+    display: block;
+  }
+
+  /* Hide menu by default */
+  .nav-menu {
+    display: none;
+    width: 100%;
+  }
+
+  /* When “open” class is added, show it */
+  .nav-menu.open {
+    display: block;
+    background: rgba(59,64,95,0.95);
+    padding: 1rem 0;
+  }
+
+  /* Stack links vertically */
+  .nav-menu ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
 }
 
 /* About Section Styling */
@@ -203,6 +257,113 @@ nav ul li a:hover {
   align-items: center;
   column-gap: 1rem;
 }
+
+/* Section title */
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Flex container */
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Image */
+.about-image img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+}
+
+/* Text block */
+.about-text {
+  flex: 1 1 300px;       /* will shrink/grow around 300px base */
+}
+
+.about-subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.about-text p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+
+/* Mobile phones */
+@media (max-width: 600px) {
+  .about {
+    flex-direction: column;
+    text-align: center;
+  }
+  .about-image img {
+    max-width: 80%;
+    margin: 0 auto 1rem;
+  }
+  .about-text p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Tablets */
+@media (min-width: 601px) and (max-width: 900px) {
+  .about {
+    flex-direction: column;
+    text-align: center;
+  }
+  .about-image img {
+    max-width: 250px;
+    margin: 0 auto 1rem;
+  }
+  .about-text p {
+    font-size: 1rem;
+  }
+}
+
+/* Navbar button (hamburger icon) */
+.menu-toggle {
+  cursor: pointer;
+  font-size: 1.8rem;
+  color: white; /* default white */
+  padding: 10px;
+  z-index: 1001;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+}
+
+/* Sidebar navigation */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 220px;
+  height: 100vh;
+  background-color: #2c2f48;
+  padding-top: 60px;
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+
+/* When sidebar is active */
+.sidebar.active {
+  left: 0;
+}
+
+/* When menu is clicked (add white highlight or background) */
+.menu-toggle.active {
+  color: #fff;
+  background-color: #444; /* Optional: highlight effect */
+  border-radius: 4px;
+}
+
 
 /*=============== MEDIA QUERIES ===============*/
 /* For small devices */
@@ -650,7 +811,7 @@ nav ul {
 }
 
 .certificate-img {
-  width: 100px;
+  width: 80px;                /* adjust to taste */
   height: auto;
   border-radius: 8px;
 }
@@ -673,4 +834,16 @@ nav ul {
 
 .certificate-info a:hover {
   text-decoration: underline;
+}
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Force one card per row below 600px */
+@media (max-width: 600px) {
+  .certificates-grid {
+    grid-template-columns: 1fr;
+  }
 }
