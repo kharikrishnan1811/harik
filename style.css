@@ -1,5 +1,4 @@
-*
-{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -17,10 +16,41 @@ body {
 .container {
   width: 80%;
   margin: auto;
-    max-width: 1200px;
+  max-width: 1200px;
   overflow: hidden;
 }
 
+/* header session */
+.header {
+ background: #3b405f;
+  color: #ffffff;
+  /* Light gray background, customize as needed */
+  width: 100%;
+}
+ .navbar-custom {
+      background-color: #3b405f;
+    }
+
+    .navbar-custom .navbar-brand,
+    .navbar-custom .nav-link {
+      color: #ffffff;
+    }
+
+    .navbar-custom .nav-link:hover {
+      color: #dcdcdc;
+    }
+.navbar {
+  padding: 1rem 2rem;
+  color: #ffffff;
+}
+.navbar .navbar-expand
+{
+  color: #ffffff;
+}
+
+.navbar-nav .nav-link {
+  color: #ffffff;
+}
 
 /* Navbar basics */
 
@@ -39,8 +69,10 @@ body {
 /* 3) Push nav-menu to the right */
 .nav-menu {
   order: 2;
-  margin-left: auto;          /* key: this pushes it all the way right */
-  display: flex;              /* desktop: show inline */
+  margin-left: auto;
+  /* key: this pushes it all the way right */
+  display: flex;
+  /* desktop: show inline */
 }
 
 /* 4) Ensure the UL inside remains inline on desktop */
@@ -52,20 +84,107 @@ body {
   padding: 0;
 }
 
+  .navbar-custom {
+    background-color: #3b405f;
+  }
+
+  /* White text for brand, nav links, and icons */
+  .navbar-custom .navbar-brand,
+  .navbar-custom .nav-link,
+  .navbar-custom .nav-link i {
+    color: #ffffff !important;
+  }
+  .nac-item{
+    color: #ffffff !important;
+  }
+
+  /* Hover effect */
+  .navbar-custom .nav-link:hover,
+  .navbar-custom .nav-link:hover i {
+    color: #dcdcdc !important;
+  }
+
+  /* Toggler (hamburger) styles */
+  .navbar-custom .navbar-toggler {
+    border-color: white;
+    background-color: white;
+  }
+
+  .navbar-custom .navbar-toggler-icon {
+    color:white;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255,255,255,1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+  background-color: #f1f1f1;
+}
+
+.hamburger {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+}
+  .navbar-custom {
+    background-color: #3b405f;
+  }
+
+  .navbar-custom .navbar-brand,
+  .navbar-custom .nav-link,
+  .navbar-custom .nav-link i {
+    color: #ffffff !important;
+  }
+
+  .navbar-custom .nav-link:hover,
+  .navbar-custom .nav-link:hover i {
+    color: #dcdcdc !important;
+  }
+
+  /* Make toggler icon white */
+  .navbar-custom .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .navbar-custom .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255,255,255,1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+.hamburger {
+  font-size: 2rem;
+  /* Make it visible */
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  /* Make sure the color contrasts with background */
+}
+
+/* 
+ .hide-icon {
+    display: none;
+    
+  } */
 /* 5) Your existing mobile rules still apply */
 @media (max-width: 768px) {
   .hamburger {
     display: block;
   }
+
   .nav-menu {
-    display: none;           /* hidden until toggled */
+    display: none;
+    /* hidden until toggled */
     width: 100%;
   }
+
   .nav-menu.open {
     display: block;
-    background: rgba(59,64,95,0.95);
+    background: rgba(59, 64, 95, 0.95);
     padding: 1rem 0;
   }
+
   .nav-menu ul {
     flex-direction: column;
     align-items: center;
@@ -79,25 +198,34 @@ body {
   align-items: center;
   padding: 10px 0;
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   background: #3b405f;
   z-index: 1000;
 }
 
 /* Hamburger (hidden on desktop) */
 .hamburger {
-  display: none;
-  font-size: 1.8rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
   background: none;
   border: none;
-  color: #fff;
+  font-size: 1.5rem;
   cursor: pointer;
+}
+
+/* Optional: make sure the parent container is positioned */
+.navbar {
+  position: relative;
 }
 
 /* Nav-menu defaults */
 .nav-menu {
   display: flex;
 }
+
 .nav-menu ul {
   display: flex;
   list-style: none;
@@ -105,17 +233,20 @@ body {
   margin: 0;
   padding: 0;
 }
+
 .nav-menu a {
   color: white;
   text-decoration: none;
   transition: color 0.3s;
 }
+
 .nav-menu a:hover {
   color: #ffdd59;
 }
 
 /* MOBILE: ≤768px */
 @media (max-width: 768px) {
+
   /* Show hamburger */
   .hamburger {
     display: block;
@@ -130,7 +261,7 @@ body {
   /* When “open” class is added, show it */
   .nav-menu.open {
     display: block;
-    background: rgba(59,64,95,0.95);
+    background: rgba(59, 64, 95, 0.95);
     padding: 1rem 0;
   }
 
@@ -148,6 +279,7 @@ body {
   padding: 50px 0;
   margin: 20px 0;
 }
+
 .about-us {
   padding: 60px 20px;
   background-color: #f8f9fa;
@@ -261,6 +393,7 @@ body {
   justify-self: center;
   margin-block: 2.5rem 4.5rem;
 }
+
 /* --- existing about styles above --- */
 
 /* Center the heading */
@@ -384,7 +517,8 @@ body {
 
 /* Text block */
 .about-text {
-  flex: 1 1 300px;       /* will shrink/grow around 300px base */
+  flex: 1 1 300px;
+  /* will shrink/grow around 300px base */
 }
 
 .about-subtitle {
@@ -405,10 +539,12 @@ body {
     flex-direction: column;
     text-align: center;
   }
+
   .about-image img {
     max-width: 80%;
     margin: 0 auto 1rem;
   }
+
   .about-text p {
     font-size: 0.95rem;
   }
@@ -420,10 +556,12 @@ body {
     flex-direction: column;
     text-align: center;
   }
+
   .about-image img {
     max-width: 250px;
     margin: 0 auto 1rem;
   }
+
   .about-text p {
     font-size: 1rem;
   }
@@ -433,7 +571,8 @@ body {
 .menu-toggle {
   cursor: pointer;
   font-size: 1.8rem;
-  color: white; /* default white */
+  color: white;
+  /* default white */
   padding: 10px;
   z-index: 1001;
   position: fixed;
@@ -462,7 +601,8 @@ body {
 /* When menu is clicked (add white highlight or background) */
 .menu-toggle.active {
   color: #fff;
-  background-color: #444; /* Optional: highlight effect */
+  background-color: #444;
+  /* Optional: highlight effect */
   border-radius: 4px;
 }
 
@@ -716,7 +856,7 @@ footer {
   justify-content: center;
   padding: 60px 0;
   /* background: linear-gradient(to right, #6a11cb, #2575fc); */
-  height:100hv;
+  height: 100hv;
   color: #fff;
 }
 
@@ -858,7 +998,8 @@ h3 {
 }
 
 #contact a {
-  color: #0077b5; /* LinkedIn blue */
+  color: #0077b5;
+  /* LinkedIn blue */
   text-decoration: none;
 }
 
@@ -913,7 +1054,8 @@ nav ul {
 }
 
 .certificate-img {
-  width: 80px;                /* adjust to taste */
+  width: 80px;
+  /* adjust to taste */
   height: auto;
   border-radius: 8px;
 }
@@ -937,6 +1079,7 @@ nav ul {
 .certificate-info a:hover {
   text-decoration: underline;
 }
+
 .certificates-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
