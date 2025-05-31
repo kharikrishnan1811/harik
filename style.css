@@ -122,6 +122,12 @@ body {
   background-color: #f1f1f1;
 }
 
+.map-container {
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
 .hamburger {
   font-size: 2rem;
   background: none;
@@ -859,7 +865,6 @@ footer {
   height: 100hv;
   color: #fff;
 }
-
 
 
 .home-text {
